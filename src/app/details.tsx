@@ -7,12 +7,13 @@ import {
   useWindowDimensions,
 } from "react-native";
 import { useEffect, useState } from "react";
-import { useLocalSearchParams } from "expo-router";
+import { Stack, useLocalSearchParams } from "expo-router";
 
 import {
   pokemonLimitedInfoType,
   pokemonVeryDetailedInfoType,
 } from "../utils/types";
+import { generateCustomStyle, styles } from "../utils/styles";
 
 export default function Details() {
   const [pokemonInfo, setPokemonInfo] =
@@ -20,9 +21,11 @@ export default function Details() {
 
   const params: pokemonLimitedInfoType = useLocalSearchParams();
 
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
-  console.log({ height, width });
+  const widthOfPokedexEntry = Math.min(width, 600);
+
+  const imageDims = widthOfPokedexEntry * 0.2;
 
   const urlArray = params.url.split("/");
   const pokemonNumber = urlArray[urlArray.length - 2];
@@ -78,16 +81,54 @@ export default function Details() {
     }
   }, []);
 
-  console.log(pokemonInfo?.imageUrl);
+  if (!pokemonInfo) {
+    return null;
+  }
+
+  const customStyle = generateCustomStyle(pokemonInfo, widthOfPokedexEntry);
+
   return (
-    <ScrollView contentContainerStyle={{}}>
-      <View>
-        <View>
-          <Image source={{ uri: pokemonInfo?.imageUrl }} />
+    <>
+      <Stack.Screen options={{ title: params.name }} />
+      <ScrollView>
+        <View style={customStyle.pokedexTopParent}>
+          <View style={styles.pokedexImageParent}>
+            <Image
+              style={{ width: imageDims, height: imageDims }}
+              source={{ uri: pokemonInfo?.imageUrl }}
+            />
+            {pokemonInfo?.number ? (
+              <Text style={styles.spreadOutText}>
+                <Text style={styles.boldText}>No. </Text>
+                <Text style={styles.boldText}>
+                  {pokemonInfo.number.toString().padStart(3, "0")}
+                </Text>
+              </Text>
+            ) : null}
+          </View>
+          <View style={styles.pokedexTopInfoParent}>
+            <Text>{pokemonInfo?.name}</Text>
+            <Text>{pokemonInfo?.genus}</Text>
+            <View style={styles.spreadOutText}>
+              <Text>HT</Text>
+              <View style={styles.closeText}>
+                <Text style={styles.boldText}>{pokemonInfo?.heightCm}</Text>
+                <Text>cm</Text>
+              </View>
+            </View>
+            <View style={styles.spreadOutText}>
+              <Text>WT</Text>
+              <View style={styles.closeText}>
+                <Text style={styles.boldText}>{pokemonInfo?.weightKg}</Text>
+                <Text>kg</Text>
+              </View>
+            </View>
+          </View>
         </View>
-        <View></View>
-      </View>
-      <View></View>
-    </ScrollView>
+        <View>
+          <Text style={styles.centeredText}>{pokemonInfo?.text}</Text>
+        </View>
+      </ScrollView>
+    </>
   );
 }

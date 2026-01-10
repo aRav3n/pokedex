@@ -3,6 +3,16 @@ import { StyleSheet } from "react-native";
 import { pokemonDetailedInfoType, pokemonVeryDetailedInfoType } from "./types";
 
 export const styles = StyleSheet.create({
+  boldText: {
+    fontWeight: "bold",
+  },
+  centeredText: {
+    alignSelf: "center",
+    padding: 12,
+  },
+  closeText: {
+    flexDirection: "row",
+  },
   mainFlexContainerContentStyle: {
     alignContent: "center",
     alignItems: "center",
@@ -13,6 +23,18 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
+  },
+  pokedexTopInfoParent: {
+    justifyContent: "space-between",
+  },
+  pokedexImageParent: {
+    justifyContent: "flex-end",
+    alignContent: "center",
+    alignItems: "center",
+  },
+  spreadOutText: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   typeText: {
     fontSize: 18,
@@ -56,6 +78,14 @@ export function generateCustomStyle(
       backgroundColor: bgColor,
       borderRadius: 20,
       padding: 20,
+    },
+    pokedexTopParent: {
+      backgroundColor: bgColor,
+      borderBottomColor: "#000000",
+      borderBottomWidth: 4,
+      flexDirection: "row",
+      justifyContent: "space-evenly",
+      padding: 12,
     },
   });
 
