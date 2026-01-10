@@ -55,11 +55,22 @@ export default function Details() {
             .split(" ")[0]
             .toUpperCase();
 
-          const textArray =
-            moreDetailData.flavor_text_entries[28].flavor_text.split("\n");
-          let text = textArray[0];
-          for (let i = 1; i < textArray.length; i++) {
-            text += " " + textArray[i];
+          let text;
+
+          for (let i = 0; i < moreDetailData.flavor_text_entries.length; i++) {
+            const textEntry = moreDetailData.flavor_text_entries[i];
+
+            if (
+              textEntry.language.name === "en" &&
+              textEntry.version.name === "red"
+            ) {
+              const textArray = textEntry.flavor_text.split(/[\n\u000c]/);
+              let tempText = textArray[0];
+              for (let i = 1; i < textArray.length; i++) {
+                tempText += " " + textArray[i];
+              }
+              text = tempText;
+            }
           }
 
           const pokedexInfo = {
