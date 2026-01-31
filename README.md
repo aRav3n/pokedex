@@ -24,9 +24,7 @@ Write a paragraph or two describing the project here.
 
 ## Where to Download the App
 
-<!-- ******** Add link ************
-[Try it out online](LINK_TO_WEB_DEPLOYMENT)
--->
+[Try it out online](https://grounded-wanderer-pokedex.expo.app)
 
 <!-- ******** Add link ************
 <a href="https://play.google.com/store/games"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" style="height: 48px; width: auto;"/></a>
@@ -42,7 +40,10 @@ Write a paragraph or two describing the project here.
 
 ## Usage and Screenshots
 
+<div>
 <img src="./public/screenshot.png" alt="screenshot" style="height: 50vh; width: auto;">
+<img src="./public/screenshot.png" alt="screenshot" style="height: 50vh; width: auto;">
+</div>
 
 Here's a brief description of how to use the app.
 
@@ -80,6 +81,7 @@ Here's a brief description of how to use the app.
    - `^` + `c` will end the process
 
 **Note: to build a production apk:**
+
 1. ```bash
    code eas.json
    ```
