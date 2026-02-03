@@ -36,6 +36,7 @@ export type pokemonDetailedInfo = {
 };
 
 export type pokemonVeryDetailedInfo = {
+  backgroundColor: string;
   imageUrl: string;
   number: number;
   name: string;

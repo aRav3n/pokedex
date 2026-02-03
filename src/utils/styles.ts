@@ -7,6 +7,8 @@ import {
 } from "./types";
 import { asPokemonType } from "./utilityFunctions";
 
+const pokedexEntryTextSize = 24;
+
 export const styles = StyleSheet.create({
   boldText: {
     fontWeight: "bold",
@@ -41,17 +43,31 @@ export const styles = StyleSheet.create({
   },
   nameText: {
     flexGrow: 1,
-    fontSize: 16,
+    fontSize: pokedexEntryTextSize * 0.8,
     fontWeight: "bold",
     textAlign: "center",
   },
-  pokedexTopInfoParent: {
-    justifyContent: "space-between",
+  pokedexHeaderDetailText: {
+    fontSize: pokedexEntryTextSize * 0.8,
+    alignContent: "flex-end",
+  },
+  pokedexHeaderText: {
+    fontSize: pokedexEntryTextSize * 1.25,
+    textAlign: "left",
+  },
+  pokedexInfoText: {
+    alignSelf: "center",
+    fontSize: pokedexEntryTextSize,
+    padding: 12,
+    textAlign: "left",
   },
   pokedexImageParent: {
     justifyContent: "flex-end",
     alignContent: "center",
     alignItems: "center",
+  },
+  pokedexTopInfoParent: {
+    justifyContent: "space-between",
   },
   spreadOutText: {
     flexDirection: "row",
@@ -59,7 +75,7 @@ export const styles = StyleSheet.create({
   },
   typeText: {
     flexGrow: 1,
-    fontSize: 14,
+    fontSize: pokedexEntryTextSize * 0.7,
     textAlign: "center",
   },
 });

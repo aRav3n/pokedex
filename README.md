@@ -168,6 +168,7 @@ You can view the Pokédex entry for each Pokémon by clicking on them.
 
 ### Other Credits
 
+- [CSS Colors API](https://www.csscolorsapi.com/)
 - [Devicion](https://devicon.dev/)
 - [Skillicons](https://skillicons.dev/)
 - [PokéAPI](https://pokeapi.co)
