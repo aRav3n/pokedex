@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { Link } from "expo-router";
 
 import {
-  pokemonCardPropType,
-  pokemonDetailedInfoType,
-  pokemonLimitedInfoType,
+  pokemonCardProp,
+  pokemonDetailedInfo,
+  pokemonLimitedInfo,
 } from "../utils/types";
 import { generateCustomStyle, styles } from "../utils/styles";
 import { capitalizeWords } from "../utils/utilityFunctions";
@@ -14,17 +14,17 @@ export default function PokemonCard({
   pokemon,
   cardHeight,
   cardWidth,
-}: pokemonCardPropType) {
+}: pokemonCardProp) {
   const blankPokemonDetailObject = {
     name: "",
     url: "",
     image: "",
-    types: [{ slot: 0, type: { name: "", url: "" } }],
+    types: [],
   };
   const [detailedPokemonInfo, setDetailedPokemonInfo] =
-    useState<pokemonDetailedInfoType>(blankPokemonDetailObject);
+    useState<pokemonDetailedInfo>(blankPokemonDetailObject);
 
-  async function fetchDetails(pokemonToFetch: pokemonLimitedInfoType) {
+  async function fetchDetails(pokemonToFetch: pokemonLimitedInfo) {
     try {
       const response = await fetch(pokemonToFetch.url);
       const data = await response.json();
@@ -42,7 +42,6 @@ export default function PokemonCard({
         pokemonWithDetails.types[i].type.name = newTypeName;
       }
 
-      console.log(pokemonWithDetails);
       setDetailedPokemonInfo(pokemonWithDetails);
     } catch (e) {
       console.error(e);
@@ -53,7 +52,7 @@ export default function PokemonCard({
     fetchDetails(pokemon);
   }, []);
 
-  if (detailedPokemonInfo) {
+  if (detailedPokemonInfo.name !== "") {
     const customStyle = generateCustomStyle(
       detailedPokemonInfo,
       cardHeight,

@@ -6,7 +6,6 @@ import { useHeaderHeight } from "@react-navigation/elements";
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-
   return (
     <Stack>
       <Stack.Screen

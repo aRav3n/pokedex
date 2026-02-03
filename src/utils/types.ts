@@ -1,20 +1,41 @@
-export type pokemonLimitedInfoType = {
-  name: string;
+export type pokemonTypeType =
+  | "normal"
+  | "fire"
+  | "water"
+  | "electric"
+  | "grass"
+  | "ice"
+  | "fighting"
+  | "poison"
+  | "ground"
+  | "flying"
+  | "psychic"
+  | "bug"
+  | "rock"
+  | "ghost"
+  | "dragon"
+  | "dark"
+  | "steel"
+  | "fairy";
+
+export type typeObject = {
+  name: pokemonTypeType;
   url: string;
 };
-type pokemonTypeParent = {
+
+type typeParent = {
   slot: number;
-  type: pokemonLimitedInfoType;
+  type: typeObject;
 };
 
-export type pokemonDetailedInfoType = {
+export type pokemonDetailedInfo = {
   name: string;
   url: string;
   image: string;
-  types: pokemonTypeParent[];
+  types: typeParent[];
 };
 
-export type pokemonVeryDetailedInfoType = {
+export type pokemonVeryDetailedInfo = {
   imageUrl: string;
   number: number;
   name: string;
@@ -22,11 +43,16 @@ export type pokemonVeryDetailedInfoType = {
   heightCm: number;
   weightKg: number;
   text: string;
-  types: pokemonTypeParent[];
+  types: typeParent[];
 };
 
-export type pokemonCardPropType = {
-  pokemon: pokemonLimitedInfoType;
+export type pokemonLimitedInfo = {
+  name: string;
+  url: string;
+};
+
+export type pokemonCardProp = {
+  pokemon: pokemonLimitedInfo;
   cardHeight: number | null;
   cardWidth: number | null;
 };

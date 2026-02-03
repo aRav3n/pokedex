@@ -1,3 +1,9 @@
+import { pokemonTypeType } from "./types";
+
+function asPokemonType(typeName: string) {
+  return typeName as pokemonTypeType;
+}
+
 function capitalizeWords(stringOrWordsToCapitalize: string) {
   function capitalizeIndividualWord(word: string) {
     const firstChar = word.charAt(0).toUpperCase();
@@ -37,4 +43,4 @@ function generateMainCardSize(indexHeight: number, indexWidth: number) {
   return { generatedCardHeight, generatedCardWidth };
 }
 
-export { capitalizeWords, generateMainCardSize };
+export { asPokemonType, capitalizeWords, generateMainCardSize };

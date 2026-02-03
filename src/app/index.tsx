@@ -7,7 +7,7 @@ import { useHeaderHeight } from "@react-navigation/elements";
 
 import PokemonCard from "../components/pokemonCard";
 
-import { pokemonLimitedInfoType } from "../utils/types";
+import { pokemonLimitedInfo } from "../utils/types";
 import { styles } from "../utils/styles";
 import { generateMainCardSize } from "../utils/utilityFunctions";
 
@@ -16,9 +16,7 @@ const qtyOfPokemonToFetch = 151;
 export default function Index() {
   const apiURL =
     "https://pokeapi.co/api/v2/pokemon/?limit=" + qtyOfPokemonToFetch;
-  const [pokemonArray, setPokemonArray] = useState<pokemonLimitedInfoType[]>(
-    [],
-  );
+  const [pokemonArray, setPokemonArray] = useState<pokemonLimitedInfo[]>([]);
   const [cardHeight, setCardHeight] = useState<number>(0);
   const [cardWidth, setCardWidth] = useState<number>(0);
 

@@ -1,6 +1,11 @@
 import { StyleSheet } from "react-native";
 
-import { pokemonDetailedInfoType, pokemonVeryDetailedInfoType } from "./types";
+import {
+  pokemonDetailedInfo,
+  pokemonVeryDetailedInfo,
+  pokemonTypeType,
+} from "./types";
+import { asPokemonType } from "./utilityFunctions";
 
 export const styles = StyleSheet.create({
   boldText: {
@@ -60,12 +65,12 @@ export const styles = StyleSheet.create({
 });
 
 export function generateCustomStyle(
-  pokemonInfo: pokemonDetailedInfoType | pokemonVeryDetailedInfoType,
+  pokemonInfo: pokemonDetailedInfo | pokemonVeryDetailedInfo,
   cardHeight: number | null,
   cardWidth: number | null,
 ) {
   // credit: perplexity.ai
-  const colorsByType = {
+  const colorsByType: Record<pokemonTypeType, string> = {
     normal: "#CCC1B6",
     fire: "#F4B397",
     water: "#A9D4F2",
@@ -86,10 +91,11 @@ export function generateCustomStyle(
     fairy: "#F6D4E8",
   };
 
-  const bgColor = pokemonInfo?.types
-    ? // @ts-ignore
-      colorsByType[pokemonInfo.types[0].type.name]
-    : "pink";
+  const lowerCaseTypeName = asPokemonType(
+    pokemonInfo.types[0].type.name.toLowerCase(),
+  );
+
+  const bgColor = colorsByType[lowerCaseTypeName] ?? "pink";
 
   const imageDims =
     cardHeight && cardWidth ? Math.min(cardHeight, cardWidth) * 0.5 : 100;
