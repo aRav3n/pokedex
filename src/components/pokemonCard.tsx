@@ -70,7 +70,7 @@ export default function PokemonCard({
         }}
       >
         <View style={customStyle.mainCard}>
-          <Text style={styles.nameText}>{pokemon.name}</Text>
+          <Text style={styles.nameText}>{detailedPokemonInfo.name}</Text>
           {detailedPokemonInfo.types && (
             <Text style={styles.typeText}>
               {detailedPokemonInfo.types[0].type.name}
