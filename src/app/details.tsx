@@ -38,6 +38,8 @@ export default function Details() {
 
           const officialArtwork = "official-artwork";
 
+          console.log(params.url);
+
           const ogResponse = await fetch(params.url);
           const ogData = await ogResponse.json();
 
@@ -78,10 +80,14 @@ export default function Details() {
           );
           const colorData = await colorRes.json();
 
-          const backgroundColor = `#${colorData.data.hex}22`;
-          console.log(backgroundColor);
+          const headerColor = `#${colorData.data.hex}99`;
+          const backgroundColor = `#${colorData.data.hex}44`;
+          let headerText;
+          for (let i = 0; i < types.length; i++) {}
 
           const pokedexInfo = {
+            backgroundColor,
+            headerColor,
             imageUrl,
             number,
             name,
@@ -90,7 +96,6 @@ export default function Details() {
             weightKg,
             text,
             types,
-            backgroundColor,
           };
 
           setPokemonInfo(pokedexInfo);
@@ -113,7 +118,12 @@ export default function Details() {
 
   return (
     <>
-      <Stack.Screen options={{ title: params.name }} />
+      <Stack.Screen
+        options={{
+          title: params.name,
+          headerStyle: { backgroundColor: pokemonInfo.headerColor },
+        }}
+      />
       <ScrollView style={{ backgroundColor: pokemonInfo.backgroundColor }}>
         <View style={customStyle.pokedexTopParent}>
           <View style={styles.pokedexImageParent}>
